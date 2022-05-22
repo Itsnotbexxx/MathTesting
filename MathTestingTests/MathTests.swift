@@ -6,30 +6,69 @@
 //
 
 import XCTest
+@testable import MathTesting
 
 class MathTests: XCTestCase {
 
+    var sut: Math!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = Math()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testAdditionOfPositiveNumbers(){
+        
+        let num1 = 2
+        let num2 = 5
+        
+        let result = sut.add(num1: num1, num2: num2)
+        
+        XCTAssertEqual(result, 7)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testNegativeOfPositiveNumbers(){
+        
+        let num1 = 2
+        let num2 = -5
+        
+        let result = sut.add(num1: num1, num2: num2)
+        
+        XCTAssertEqual(result, -3)
     }
+    
+    func testWrongAddition(){
+        
+        let num1 = 2
+        let num2 = 0
+        
+        let result = sut.add(num1: num1, num2: num2)
+        
+        XCTAssertNotEqual(result, 20)
+    }
+    
+    func testMultiply(){
+        
+        let num1 = 2
+        let num2 = 3
+        
+        let result = sut.multiply(num1: num1, num2: num2)
+        
+        XCTAssertEqual(result, 6)
+    }
+    
+    func testDivide(){
+        
+        let num1 = 6
+        let num2 = 6
+        
+        let result = sut.divide(num1: num1, num2: num2)
+        
+        XCTAssertEqual(result, 1)
+    }
+    
 
 }
